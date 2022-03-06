@@ -16,6 +16,7 @@ const productRoute = require("./routes/product.route");
 const offerRoute = require("./routes/offer.route");
 const contractNoteRoute = require("./routes/contractNote.route");
 const invoiceRoute = require("./routes/invoice.route");
+const homeRouter = require("./routes/home.route");
 
 app.use(cors()); //use cors
 app.use(express.urlencoded({ extended: true }));
@@ -36,6 +37,7 @@ db.once("open", function () {
     console.log("Connected successfully");
 });
 
+app.use("/", homeRouter);
 app.use("/auth", authRoute);
 app.use("/user", userRoute);
 app.use("/customer", customerRoute);
